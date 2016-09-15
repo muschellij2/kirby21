@@ -6,6 +6,8 @@
 #' @param modalities vector of image modalities within
 #' \code{c("FLAIR", "MPRAGE", "T2w")} to return
 #' @param visits Vector of scan indices to return (1 or 2 or both)
+#' @return Data.frame of filenames
+#' 
 #' @examples
 #' get_image_filenames()
 #' @export
