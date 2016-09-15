@@ -35,9 +35,11 @@ get_image_filenames = function(ids = get_ids(),
 #'
 #' @description Return the filenames for the images
 #' @param ... arguments passed to \code{\link{get_image_filenames}}
+#' @param long if \code{TRUE}, each row is a subject, visit, modality pair
 #' @importFrom tidyr spread
 #' @export
-get_image_filenames_df = function(...){
+get_image_filenames_df = function(...,
+                                  long = FALSE){
   modality = fname = NULL
   
   filenames = get_image_filenames(...)
@@ -52,14 +54,42 @@ get_image_filenames_df = function(...){
   x$visit = as.numeric(x$visit)
   df = data.frame(fname = filenames, stringsAsFactors = FALSE)
   df = cbind(df, x)
-  df = spread(df, key = modality, value = fname)
+  if (!long) {
+    df = spread(df, key = modality, value = fname)
+  }
 
   return(df)
 }
 
 #' @rdname get_image_filenames_df
 #' @export
-get_image_filenames_matrix = function(...){
-  df = as.matrix(get_image_filenames_df(...))
+get_image_filenames_matrix = function(...,
+                                      long = FALSE){
+  df = as.matrix(get_image_filenames_df(...,
+                                        long = long))
   return(df)
+}
+
+#' @rdname get_image_filenames_df
+#' @export
+get_image_filenames_list_by_visit = function(...){
+
+  df = get_image_filenames_df(..., long = TRUE)
+  ss = split(df, df$visit)
+  ss = lapply(ss, function(x){
+    split(x, x$Subject_ID)
+  })
+  return(ss)
+}
+
+#' @rdname get_image_filenames_df
+#' @export
+get_image_filenames_list_by_subject = function(...){
+  
+  df = get_image_filenames_df(..., long = TRUE)
+  ss = split(df, df$Subject_ID)
+  ss = lapply(ss, function(x){
+    split(x, x$visit)
+  })
+  return(ss)
 }
