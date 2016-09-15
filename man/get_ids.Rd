@@ -2,11 +2,11 @@
 % Please edit documentation in R/get_ids.R
 \name{get_ids}
 \alias{get_ids}
-\title{Get a list of the IDs}
+\title{Get IDs with Data in Package}
 \usage{
 get_ids()
 }
 \description{
-Return the IDs for the people scanned
+Return the IDs for the people scanned available for reading
 }
 
