@@ -11,7 +11,7 @@ get_image_filenames(ids = get_ids(), modalities = c("FLAIR", "MPRAGE",
 \item{ids}{ID to return}
 
 \item{modalities}{vector of image modalities within
-\code{c("FLAIR", "MPRAGE", "T2w")} to return}
+\code{c("FLAIR", "MPRAGE", "T2w", "fMRI", "DTI")} to return}
 
 \item{visits}{Vector of scan indices to return (1 or 2 or both)}
 }

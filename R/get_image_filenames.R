@@ -4,7 +4,7 @@
 #' @description Return the filenames for the images
 #' @param ids ID to return
 #' @param modalities vector of image modalities within
-#' \code{c("FLAIR", "MPRAGE", "T2w")} to return
+#' \code{c("FLAIR", "MPRAGE", "T2w", "fMRI", "DTI")} to return
 #' @param visits Vector of scan indices to return (1 or 2 or both)
 #' @return Data.frame of filenames
 #' 
@@ -31,14 +31,13 @@ get_image_filenames = function(ids = get_ids(),
   return(filenames)
 }
 
-#' @name get_image_filenames_matrix
 #' @title Get Image Filenames in a matrix
 #'
 #' @description Return the filenames for the images
 #' @param ... arguments passed to \code{\link{get_image_filenames}}
 #' @importFrom tidyr spread
 #' @export
-get_image_filenames_matrix = function(...){
+get_image_filenames_df = function(...){
   modality = fname = NULL
   
   filenames = get_image_filenames(...)
@@ -58,3 +57,9 @@ get_image_filenames_matrix = function(...){
   return(df)
 }
 
+#' @rdname get_image_filenames_df
+#' @export
+get_image_filenames_matrix = function(...){
+  df = as.matrix(get_image_filenames_df(...))
+  return(df)
+}

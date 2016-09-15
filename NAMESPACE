@@ -3,6 +3,7 @@
 export(copy_kirby21_data)
 export(get_ids)
 export(get_image_filenames)
+export(get_image_filenames_df)
 export(get_image_filenames_matrix)
 export(get_par_filenames)
 importFrom(tidyr,spread)
