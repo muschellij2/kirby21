@@ -1,0 +1,15 @@
+Package: kirby21
+Type: Package
+Title: Example Structural Data from the Multi-Modal MRI Reproducibility Resource
+Version: 1.1.3
+Author: John Muschelli <muschellij2@gmail.com>
+Maintainer: John Muschelli <muschellij2@gmail.com>
+Description: Structural multi-modal magnetic resonance imaging ('MRI')
+    data from the 'Kirby21' reproducibility study.
+License: GPL-2 
+LazyData: true
+LazyLoad: true
+Imports:
+    tidyr,
+    utils
+RoxygenNote: 5.0.1.9000
