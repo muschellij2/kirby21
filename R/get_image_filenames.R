@@ -18,8 +18,8 @@ get_image_filenames = function(ids = get_ids(),
   modalities = unique(modalities)
   visits = as.numeric(visits)
   visits = sprintf("%02.0f", visits)
-  v_ids = c(outer(ids, visits, paste, sep="-"))
-  fnames = c(outer(v_ids, modalities, paste, sep="-"))
+  v_ids = c(outer(ids, visits, paste, sep = "-"))
+  fnames = c(outer(v_ids, modalities, paste, sep = "-"))
   fnames = paste0(fnames, ".nii.gz")
   df = data.frame(fname = fnames, stringsAsFactors = FALSE)
   ss = strsplit(df$fname, "-")
@@ -27,7 +27,7 @@ get_image_filenames = function(ids = get_ids(),
   df$visit = as.numeric(sapply(ss, `[`, 2))
   df$fname = file.path(paste0("visit_", df$visit), df$id, df$fname)
   df$id = NULL
-  filenames = system.file( df$fname, package="kirby21")
+  filenames = system.file( df$fname, package = "kirby21")
   return(filenames)
 }
 
@@ -42,18 +42,18 @@ get_image_filenames_matrix = function(...){
   modality = fname = NULL
   
   filenames = get_image_filenames(...)
-  df = data.frame(fname = filenames, stringsAsFactors=FALSE)
+  df = data.frame(fname = filenames, stringsAsFactors = FALSE)
   ff = basename(df$fname)
   ff = gsub("[.]nii[.]gz$", "", ff)
   ss = strsplit( ff, "-")
   x = do.call("rbind", ss)
   colnames(x) = c("Subject_ID", "visit", "modality")
-  x = data.frame(x, stringsAsFactors=FALSE)
+  x = data.frame(x, stringsAsFactors = FALSE)
   x$Subject_ID = as.numeric(x$Subject_ID)
   x$visit = as.numeric(x$visit)
-  df = data.frame(fname = filenames, stringsAsFactors=FALSE)
+  df = data.frame(fname = filenames, stringsAsFactors = FALSE)
   df = cbind(df, x)
-  df = spread(df, key=modality, value=fname)
+  df = spread(df, key = modality, value = fname)
 
   return(df)
 }
