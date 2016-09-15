@@ -2,6 +2,7 @@
 % Please edit documentation in R/get_image_filenames.R
 \name{get_image_filenames_df}
 \alias{get_image_filenames_df}
+\alias{get_image_filenames_list}
 \alias{get_image_filenames_list_by_subject}
 \alias{get_image_filenames_list_by_visit}
 \alias{get_image_filenames_matrix}
@@ -10,6 +11,8 @@
 get_image_filenames_df(..., long = FALSE)
 
 get_image_filenames_matrix(..., long = FALSE)
+
+get_image_filenames_list(...)
 
 get_image_filenames_list_by_visit(...)
 

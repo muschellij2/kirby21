@@ -72,6 +72,17 @@ get_image_filenames_matrix = function(...,
 
 #' @rdname get_image_filenames_df
 #' @export
+get_image_filenames_list = function(...){
+  
+  df = get_image_filenames_df(..., long = TRUE)
+  df$Subject_ID = df$visit = NULL
+  ss = as.list(df)
+  return(ss)
+}
+
+
+#' @rdname get_image_filenames_df
+#' @export
 get_image_filenames_list_by_visit = function(...){
 
   df = get_image_filenames_df(..., long = TRUE)
